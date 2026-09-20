@@ -1,0 +1,9 @@
+{
+  "event_id": "evt-092105-001-0001",
+  "event_type": "CHANGEOVER_REQUESTED",
+  "aggregate_type": "changeover_plan",
+  "aggregate_id": "festival-food-changeover-001",
+  "occurred_at": "2026-09-20T12:00:00+08:00",
+  "version": 1,
+  "summary": "登记节令食品换线放行的首条领域记录"
+}
