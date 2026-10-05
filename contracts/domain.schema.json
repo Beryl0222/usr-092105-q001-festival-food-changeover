@@ -16,14 +16,18 @@
     "event_id": {
       "type": "string",
       "minLength": 8,
-      "description": "事件唯一标识"
+      "description": "事件唯一标识；来源系统重试或离线重传时必须沿用原标识，系统按此幂等去重"
     },
     "event_type": {
       "type": "string",
       "enum": [
         "CHANGEOVER_REQUESTED",
         "CLEANING_RECORDED",
+        "TOOL_BORROWED",
+        "TOOL_RETURNED",
+        "PERSONNEL_HANDOVER_RECORDED",
         "VERIFICATION_RECEIVED",
+        "FIRST_PIECE_CONFIRMED",
         "RELEASE_SIGNED",
         "PRODUCTION_RESUMED"
       ],
@@ -42,12 +46,17 @@
     "aggregate_id": {
       "type": "string",
       "minLength": 1,
-      "description": "业务对象标识"
+      "description": "业务对象标识；本领域以换线计划号贯穿四个聚合，便于从任一炉次回溯"
     },
     "occurred_at": {
       "type": "string",
       "format": "date-time",
       "description": "事实发生时间"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "记录进入系统的时间；与 occurred_at 之差超过规程容忍度即判定为事后补填"
     },
     "version": {
       "type": "integer",
@@ -58,6 +67,10 @@
       "type": "string",
       "minLength": 2,
       "description": "中文事实摘要"
+    },
+    "payload": {
+      "type": "object",
+      "description": "各事件类型的业务字段，见 src/service.py 中对应处理器"
     }
   },
   "additionalProperties": true

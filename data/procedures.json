@@ -1,0 +1,88 @@
+{
+  "procedure_id": "SOP-CO-ALLERGEN",
+  "title": "节令食品换线清洁与放行规程",
+  "description": "版本只在 effective_from 之后的新换线计划中生效；已生成的计划沿用其计划时刻快照的规程版本与阈值。",
+  "versions": [
+    {
+      "version": "2.1",
+      "effective_from": "2026-01-01T00:00:00+08:00",
+      "backfill_tolerance_minutes": 30,
+      "risk_levels": {
+        "高": {
+          "steps": [
+            {"step_id": "teardown", "name": "拆洗：拆解搅拌桨、料斗与接触模具", "kind": "teardown"},
+            {"step_id": "wash", "name": "碱性清洗剂刷洗接触面", "kind": "wash"},
+            {"step_id": "rinse", "name": "热水冲洗至无残渣无泡沫", "kind": "rinse"},
+            {"step_id": "inspect", "name": "目视检查缝隙与死角", "kind": "inspect"}
+          ],
+          "verifications": [
+            {"kind": "allergen_swab", "name": "过敏原擦拭检测", "per_removed_allergen": true, "limit_ppm": 2.0, "validity_minutes": 120},
+            {"kind": "atp", "name": "ATP 洁净度检测", "limit_rlu": 150, "validity_minutes": 120}
+          ],
+          "first_piece_required": true
+        },
+        "中": {
+          "steps": [
+            {"step_id": "wash", "name": "碱性清洗剂刷洗接触面", "kind": "wash"},
+            {"step_id": "rinse", "name": "热水冲洗至无残渣无泡沫", "kind": "rinse"}
+          ],
+          "verifications": [
+            {"kind": "atp", "name": "ATP 洁净度检测", "limit_rlu": 150, "validity_minutes": 120}
+          ],
+          "first_piece_required": true
+        },
+        "低": {
+          "steps": [
+            {"step_id": "rinse", "name": "热水冲洗至无残渣无泡沫", "kind": "rinse"}
+          ],
+          "verifications": [
+            {"kind": "atp", "name": "ATP 洁净度检测", "limit_rlu": 200, "validity_minutes": 180}
+          ],
+          "first_piece_required": false
+        }
+      }
+    },
+    {
+      "version": "3.0",
+      "effective_from": "2026-09-01T00:00:00+08:00",
+      "backfill_tolerance_minutes": 15,
+      "risk_levels": {
+        "高": {
+          "steps": [
+            {"step_id": "teardown", "name": "拆洗：拆解搅拌桨、料斗与接触模具", "kind": "teardown"},
+            {"step_id": "wash", "name": "碱性清洗剂刷洗接触面", "kind": "wash"},
+            {"step_id": "rinse", "name": "热水冲洗至无残渣无泡沫", "kind": "rinse"},
+            {"step_id": "dry", "name": "压缩空气吹干并静置", "kind": "dry"},
+            {"step_id": "inspect", "name": "目视检查缝隙与死角", "kind": "inspect"}
+          ],
+          "verifications": [
+            {"kind": "allergen_swab", "name": "过敏原擦拭检测", "per_removed_allergen": true, "limit_ppm": 1.0, "validity_minutes": 90},
+            {"kind": "atp", "name": "ATP 洁净度检测", "limit_rlu": 100, "validity_minutes": 90}
+          ],
+          "first_piece_required": true
+        },
+        "中": {
+          "steps": [
+            {"step_id": "wash", "name": "碱性清洗剂刷洗接触面", "kind": "wash"},
+            {"step_id": "rinse", "name": "热水冲洗至无残渣无泡沫", "kind": "rinse"},
+            {"step_id": "inspect", "name": "目视检查缝隙与死角", "kind": "inspect"}
+          ],
+          "verifications": [
+            {"kind": "allergen_swab", "name": "过敏原擦拭检测", "per_removed_allergen": true, "limit_ppm": 1.0, "validity_minutes": 90},
+            {"kind": "atp", "name": "ATP 洁净度检测", "limit_rlu": 100, "validity_minutes": 90}
+          ],
+          "first_piece_required": true
+        },
+        "低": {
+          "steps": [
+            {"step_id": "rinse", "name": "热水冲洗至无残渣无泡沫", "kind": "rinse"}
+          ],
+          "verifications": [
+            {"kind": "atp", "name": "ATP 洁净度检测", "limit_rlu": 150, "validity_minutes": 120}
+          ],
+          "first_piece_required": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "product_id": "wuren-yuebing",
+    "name": "五仁月饼",
+    "allergens": ["坚果", "麸质", "蛋", "芝麻"],
+    "recipe_note": "含核桃仁、杏仁、芝麻，坚果类高致敏"
+  },
+  {
+    "product_id": "lianrong-yuebing",
+    "name": "纯白莲蓉月饼",
+    "allergens": ["麸质"],
+    "recipe_note": "宣称无坚果，对坚果残留零容忍"
+  },
+  {
+    "product_id": "danhuang-lianrong",
+    "name": "双黄莲蓉月饼",
+    "allergens": ["麸质", "蛋"],
+    "recipe_note": "含咸蛋黄"
+  },
+  {
+    "product_id": "yerong-yuebing",
+    "name": "椰蓉月饼",
+    "allergens": ["麸质", "蛋", "奶"],
+    "recipe_note": "含椰丝、黄油、奶粉"
+  },
+  {
+    "product_id": "lvdou-gao",
+    "name": "绿豆糕",
+    "allergens": [],
+    "recipe_note": "无常见过敏原，换入时重点防交叉污染"
+  }
+]

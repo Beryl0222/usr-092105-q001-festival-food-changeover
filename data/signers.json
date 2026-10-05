@@ -1,0 +1,24 @@
+[
+  {
+    "signer_id": "qm-chen",
+    "name": "陈质检",
+    "role": "质量经理",
+    "authorized_lines": ["L1", "L2", "L3"],
+    "effective_from": "2026-01-01T00:00:00+08:00"
+  },
+  {
+    "signer_id": "qm-liang",
+    "name": "梁品保",
+    "role": "品保主管",
+    "authorized_lines": ["L3"],
+    "effective_from": "2026-06-01T00:00:00+08:00"
+  },
+  {
+    "signer_id": "op-wang",
+    "name": "王班长",
+    "role": "生产班长",
+    "authorized_lines": [],
+    "effective_from": "2026-01-01T00:00:00+08:00",
+    "note": "生产角色，无放行签署权限"
+  }
+]
