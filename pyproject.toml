@@ -1,5 +1,5 @@
 [project]
-name = "domain-event-base"
-version = "0.1.0"
-description = "领域事件基础校验"
+name = "festival-changeover-release"
+version = "0.2.0"
+description = "节令食品换线放行：过敏原差异清洁、检测、签署放行与炉次追溯"
 requires-python = ">=3.11"

@@ -1,12 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "节令食品换线放行领域事件",
-  "description": "用于跨模块交换事实记录的公共信封。",
+  "description": "用于跨模块交换事实记录的公共信封。事件由 event_id 全局唯一标识：来源系统重试、离线重传必须沿用原 event_id，接收方据此幂等去重，重复扫码不得制造第二次清洁。occurred_at 为事实在车间真实发生时间，received_at 为平台收到时间，事后补填（received_at 晚于 occurred_at 超过宽限且无离线登记）不予承认。事件与聚合归属：changeover_plan <- CHANGEOVER_REQUESTED/PLAN_ISSUED；cleaning_execution <- CLEANING_STARTED/EQUIPMENT_SCANNED/EQUIPMENT_LOANED/EQUIPMENT_RETURNED/HANDOVER_RECORDED/CLEANING_RECORDED；verification_result <- VERIFICATION_RECEIVED；release_decision <- RELEASE_SIGNED/FIRST_PIECE_CONFIRMED/PRODUCTION_RESUMED/PRODUCTION_HELD。",
   "type": "object",
   "required": [
     "event_id",
     "event_type",
-    "aggregate_type",
     "aggregate_id",
     "occurred_at",
     "version",
@@ -16,16 +15,26 @@
     "event_id": {
       "type": "string",
       "minLength": 8,
-      "description": "事件唯一标识"
+      "description": "事件唯一标识；同一事实重传必须复用，重复的 event_id 只返回既有结果、不产生第二次效果"
     },
     "event_type": {
       "type": "string",
       "enum": [
         "CHANGEOVER_REQUESTED",
+        "PLAN_ISSUED",
+        "CLEANING_STARTED",
+        "STEP_CONFIRMED",
+        "EQUIPMENT_SCANNED",
+        "EQUIPMENT_LOANED",
+        "EQUIPMENT_RETURNED",
+        "HANDOVER_RECORDED",
+        "OFFLINE_SESSION_OPENED",
         "CLEANING_RECORDED",
         "VERIFICATION_RECEIVED",
         "RELEASE_SIGNED",
-        "PRODUCTION_RESUMED"
+        "FIRST_PIECE_CONFIRMED",
+        "PRODUCTION_RESUMED",
+        "PRODUCTION_HELD"
       ],
       "description": "本领域事件类型"
     },
@@ -37,27 +46,40 @@
         "verification_result",
         "release_decision"
       ],
-      "description": "业务对象类型"
+      "description": "业务对象类型；缺省时由事件类型按归属规则推导"
     },
     "aggregate_id": {
       "type": "string",
       "minLength": 1,
-      "description": "业务对象标识"
+      "description": "业务对象标识。计划级事件用换线编号，执行/检测/放行事件用各自执行实例或检测单编号，payload.changeover_id 回指换线计划"
     },
     "occurred_at": {
       "type": "string",
       "format": "date-time",
-      "description": "事实发生时间"
+      "description": "事实在车间的真实发生时间"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "平台收到时间（缺省视为实时上报）；离线作业须先有 offline_session_opened 登记"
     },
     "version": {
       "type": "integer",
       "minimum": 1,
-      "description": "对象版本"
+      "description": "对象版本，从 1 开始递增"
     },
     "summary": {
       "type": "string",
       "minLength": 2,
       "description": "中文事实摘要"
+    },
+    "operator": {
+      "type": "string",
+      "description": "操作人工号"
+    },
+    "payload": {
+      "type": "object",
+      "description": "事件事实内容，结构由 src/changeover 下的领域模型按事件类型解释"
     }
   },
   "additionalProperties": true

@@ -1,9 +1,17 @@
 {
-  "event_id": "evt-092105-001-0001",
+  "event_id": "evt-092105-0001-0001",
   "event_type": "CHANGEOVER_REQUESTED",
   "aggregate_type": "changeover_plan",
-  "aggregate_id": "festival-food-changeover-001",
+  "aggregate_id": "co-0920-01",
   "occurred_at": "2026-09-20T12:00:00+08:00",
   "version": 1,
-  "summary": "登记节令食品换线放行的首条领域记录"
+  "summary": "L1线 五仁月饼 换产 纯正莲蓉月饼；须清除过敏原：坚果、花生",
+  "operator": "LEAD-ZHOU",
+  "payload": {
+    "line": "L1",
+    "from_product": "P-WR5",
+    "to_product": "P-LOTUS",
+    "scheduled_at": "2026-09-20T12:00:00+08:00",
+    "must_remove_allergens": ["nut", "peanut"]
+  }
 }

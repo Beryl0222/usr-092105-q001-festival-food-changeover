@@ -1,0 +1,102 @@
+{
+  "workshop": "屯昌联合工坊·节令食品车间",
+  "line": {
+    "code": "L1",
+    "name": "1号月饼包烤线"
+  },
+  "allergens": {
+    "nut": { "name": "坚果", "priority": "高", "test": "allergen_swab", "unit": "ppm" },
+    "peanut": { "name": "花生", "priority": "高", "test": "allergen_swab", "unit": "ppm" },
+    "egg": { "name": "蛋", "priority": "高", "test": "allergen_swab", "unit": "ppm" },
+    "milk": { "name": "乳", "priority": "高", "test": "allergen_swab", "unit": "ppm" },
+    "wheat": { "name": "小麦(麸质)", "priority": "中", "test": "allergen_swab", "unit": "ppm" },
+    "soy": { "name": "大豆", "priority": "中", "test": "allergen_swab", "unit": "ppm" }
+  },
+  "products": {
+    "P-WR5": {
+      "code": "P-WR5",
+      "name": "五仁月饼",
+      "allergens": ["nut", "peanut", "wheat", "soy"],
+      "note": "混合果仁、花生碎，坚果残留风险最高"
+    },
+    "P-EGG-LOTUS": {
+      "code": "P-EGG-LOTUS",
+      "name": "蛋黄莲蓉月饼",
+      "allergens": ["egg", "wheat", "soy"]
+    },
+    "P-LOTUS": {
+      "code": "P-LOTUS",
+      "name": "纯正莲蓉月饼",
+      "allergens": ["wheat", "soy"]
+    },
+    "P-RED-BEAN": {
+      "code": "P-RED-BEAN",
+      "name": "陈皮豆沙月饼",
+      "allergens": ["wheat", "soy"]
+    }
+  },
+  "procedure_versions": [
+    {
+      "code": "COP-AH-2025",
+      "title": "含坚果产品换线清洁与放行规程",
+      "effective_at": "2025-08-01T00:00:00+08:00",
+      "wet_steps": ["干式清除", "拆洗", "冲洗", "消毒复冲", "擦干烘干与目检"],
+      "dry_steps": ["拆解吹扫吸尘", "酒精擦拭", "目检复位"],
+      "swab_points_common": ["注馅嘴", "成型模腔", "传送带接口", "周转筐内壁"],
+      "allergen_limits_ppm": {
+        "nut": 10,
+        "peanut": 10,
+        "egg": 5,
+        "milk": 5,
+        "wheat": 10,
+        "soy": 10
+      },
+      "atp_limit_rlu": 150,
+      "rinse_residual_limit_ppm": 50,
+      "verification_valid_hours": 12,
+      "late_report_grace_minutes": 30,
+      "change_note": "节令首版"
+    },
+    {
+      "code": "COP-AH-2026",
+      "title": "含坚果产品换线清洁与放行规程（中秋收紧版）",
+      "effective_at": "2026-09-25T00:00:00+08:00",
+      "wet_steps": ["干式清除", "拆洗", "冲洗", "消毒复冲", "擦干烘干与目检"],
+      "dry_steps": ["拆解吹扫吸尘", "酒精擦拭", "目检复位"],
+      "swab_points_common": ["注馅嘴", "成型模腔", "传送带接口", "周转筐内壁", "冷却架"],
+      "allergen_limits_ppm": {
+        "nut": 5,
+        "peanut": 5,
+        "egg": 5,
+        "milk": 5,
+        "wheat": 10,
+        "soy": 10
+      },
+      "atp_limit_rlu": 100,
+      "rinse_residual_limit_ppm": 50,
+      "verification_valid_hours": 8,
+      "late_report_grace_minutes": 30,
+      "change_note": "坚果/花生限值10ppm收紧至5ppm；报告有效期12h收紧至8h；增加冷却架测点"
+    }
+  ],
+  "signers": [
+    { "employee_id": "QM-LIN", "name": "林文静", "roles": ["quality_manager", "release_authority"] },
+    { "employee_id": "QA-ZHENG", "name": "郑可检", "roles": ["quality", "first_piece_authority"] },
+    { "employee_id": "LEAD-ZHOU", "name": "周大勇", "roles": ["line_lead"] },
+    { "employee_id": "OP-WU", "name": "吴进宝", "roles": ["operator"] },
+    { "employee_id": "OP-HUANG", "name": "黄爱兰", "roles": ["operator"] }
+  ],
+  "equipment": [
+    { "code": "MOLD-125-01", "type": "mold", "name": "125克圆饼模1号", "home_line": "L1" },
+    { "code": "MOLD-125-02", "type": "mold", "name": "125克圆饼模2号", "home_line": "L1" },
+    { "code": "NOZZLE-FILL-01", "type": "contact_part", "name": "注馅嘴总成", "home_line": "L1" },
+    { "code": "CRATE-W-011", "type": "crate", "name": "白色周转筐011", "home_line": "L1" },
+    { "code": "CRATE-W-012", "type": "crate", "name": "白色周转筐012", "home_line": "L1" },
+    { "code": "CRATE-W-013", "type": "crate", "name": "白色周转筐013", "home_line": "L1" },
+    { "code": "CRATE-B-031", "type": "crate", "name": "蓝色周转筐031", "home_line": "L2" },
+    { "code": "MOLD-125-09", "type": "mold", "name": "125克圆饼模9号", "home_line": "L2" }
+  ],
+  "line_equipment_scope": {
+    "L1": ["MOLD-125-01", "MOLD-125-02", "NOZZLE-FILL-01", "CRATE-W-011", "CRATE-W-012", "CRATE-W-013"]
+  }
+}
